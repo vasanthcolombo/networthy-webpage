@@ -1,0 +1,264 @@
+<style>
+:root{
+  --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9;
+  --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3;
+  --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF;
+  --font-display:'Iowan Old Style','Palatino Linotype',Georgia,serif;
+  --font-body:-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-data:ui-monospace,'SF Mono','Cascadia Code',Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; }
+}
+:root[data-theme="dark"]{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; }
+:root[data-theme="light"]{ --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9; --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3; --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF; }
+*{box-sizing:border-box;}
+body{background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6;}
+.container{max-width:56rem; margin:0 auto; padding:0 1.5rem;}
+.wide{max-width:64rem; margin:0 auto; padding:0 1.5rem;}
+h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; margin:0;}
+.eyebrow{font-family:var(--font-data); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);}
+.num{font-family:var(--font-data); font-variant-numeric:tabular-nums;}
+
+/* Hero */
+.hero{padding:4.5rem 0 3rem; border-bottom:1px solid var(--border);}
+.hero .eyebrow{margin-bottom:0.9rem;}
+.hero h1{font-size:2.9rem; line-height:1.12; max-width:34rem;}
+.hero .lede{font-size:1.15rem; color:var(--text-secondary); max-width:33rem; margin-top:1.1rem;}
+.hero .actions{display:flex; gap:0.75rem; margin-top:1.8rem; flex-wrap:wrap;}
+.btn{font-family:var(--font-body); font-size:0.9rem; font-weight:500; padding:0.7rem 1.3rem; border-radius:8px; text-decoration:none; display:inline-block;}
+.btn-primary{background:var(--accent); color:#fff;}
+.btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border);}
+.hero-shot{margin-top:3rem;}
+
+/* Placeholder blocks */
+.shot{
+  border:1.5px dashed var(--border); border-radius:14px; background:var(--surface-2);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.4rem;
+  color:var(--text-muted); text-align:center; padding:2rem 1rem;
+}
+.shot .tag{font-family:var(--font-data); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent);}
+.shot .desc{font-size:0.82rem; max-width:20rem;}
+.shot-hero{aspect-ratio:16/9;}
+.shot-phone{aspect-ratio:9/17; max-width:15rem; margin:0 auto;}
+.shot-wide{aspect-ratio:16/10;}
+.vid{ aspect-ratio:9/16; max-width:13rem; margin:0 auto; }
+
+/* Difference section */
+.section{padding:3.5rem 0;}
+.section-head{max-width:36rem; margin-bottom:2.2rem;}
+.section-head h2{font-size:1.9rem;}
+.section-head p{color:var(--text-secondary); margin-top:0.6rem;}
+.diff-list{display:flex; flex-direction:column;}
+.diff-item{display:grid; grid-template-columns:2.2rem 1fr; gap:1rem; padding:1.4rem 0; border-top:1px solid var(--border);}
+.diff-item:last-child{border-bottom:1px solid var(--border);}
+.diff-mark{width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:0.5rem;}
+.diff-item h3{font-size:1.15rem; font-weight:500; font-family:var(--font-body); margin-bottom:0.35rem;}
+.diff-item p{color:var(--text-secondary); font-size:0.92rem; margin:0; max-width:38rem;}
+.diff-item .why{font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;}
+
+/* Feature tour */
+.tour-group{margin-bottom:3.5rem;}
+.tour-group-head{display:flex; align-items:baseline; gap:0.7rem; margin-bottom:1.6rem;}
+.tour-group-head h2{font-size:1.6rem;}
+.tour-group-head .count{color:var(--text-muted); font-family:var(--font-data); font-size:0.8rem;}
+.tour-row{display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
+.tour-row:nth-child(even .tour-row){}
+.tour-row.reverse .tour-text{order:2;}
+.tour-text h3{font-family:var(--font-body); font-weight:500; font-size:1.2rem; margin-bottom:0.5rem;}
+.tour-text p{color:var(--text-secondary); font-size:0.93rem; margin:0;}
+@media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} .tour-row.reverse .tour-text{order:0;} }
+
+/* Video */
+.vid-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.5rem;}
+.vid-card{text-align:center;}
+.vid-card .label{font-size:0.82rem; color:var(--text-secondary); margin-top:0.6rem;}
+
+/* Footer */
+.footer{border-top:1px solid var(--border); padding:2.5rem 0; margin-top:1rem;}
+.footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;}
+.footer .brand{font-family:var(--font-display); font-size:1.1rem;}
+.footer a{color:var(--text-secondary); text-decoration:none; font-size:0.85rem; margin-left:1.3rem;}
+.footer a:hover{color:var(--accent);}
+</style>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Networthy — by Ten Dimension Labs</div>
+    <h1>Every broker, every account, one honest number.</h1>
+    <p class="lede">Networthy consolidates your bank accounts and every brokerage into a single portfolio — real average-cost math across brokers, true time-weighted vs. money-weighted returns, and dividend income net of withholding tax. Everything stays on your device.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#">Get it on Google Play</a>
+      <a class="btn btn-ghost" href="#difference">See what's different</a>
+    </div>
+    <div class="hero-shot">
+      <div class="shot shot-hero">
+        <span class="tag">Screenshot</span>
+        <span class="desc">Net Worth Dashboard — donut chart combining bank and investment accounts into one net-worth number</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="difference">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Why Networthy</div>
+      <h2>Things most finance apps don't do</h2>
+      <p>Not a longer feature list — a few specific things that actually require different math, not just a prettier chart.</p>
+    </div>
+    <div class="diff-list">
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>True multi-broker average cost, not side-by-side accounts</h3>
+          <p>Buy the same stock across three brokers and Networthy merges every lot into one real average-cost position — while still letting you drill into any single broker's own lots. Most trackers just list your accounts next to each other; this actually does the cost-basis math.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>Time-weighted and money-weighted return, side by side</h3>
+          <p>One chart shows your pure market performance (TWR) next to your actual annualized return given when you added or withdrew money (MWR/XIRR) — with a plain-language explainer built in. Most retail apps blend these into a single "return %" that answers neither question precisely.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>Dividend income, net of the tax you actually paid</h3>
+          <p>Per-country withholding-tax rates (Singapore, US, Japan, and more), editable if a rate changes or a new market isn't covered yet. Consumer apps typically show gross dividends and stop there.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>Group your portfolio however you actually think about it</h3>
+          <p>Define your own groupings — by country, by sector, by conviction level, whatever — instead of being stuck with one fixed taxonomy someone else chose for you.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>No bank-credential aggregator, no company server</h3>
+          <p>Your data lives on your device. No Plaid-style account linking, no financial data sitting on a server we operate. If you want a backup, it goes to your own Google Drive — we never see it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wide">
+    <div class="section-head">
+      <div class="eyebrow">Finances</div>
+      <h2>Your everyday money, in the same picture as your investments</h2>
+      <p>Income, expenses, and account balances — with every trade and dividend from Investments folded straight into the same ledger.</p>
+    </div>
+
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>One net worth number, not two apps</h3>
+        <p>Every buy, sell, dividend, and trading cost from Investments posts automatically into your Finances ledger — so your net worth reflects your whole financial life, not just your bank balance.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Net Worth Stats — Cash Flow tab with savings-rate overlay</span></div>
+    </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Accounts, grouped your way</h3>
+        <p>Group accounts however makes sense to you, split Assets from Liabilities, hide zero-balance accounts, and correct a balance with a backdated entry instead of silently overwriting history.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Accounts screen — grouped, Assets/Liabilities tabs</span></div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>Import a spreadsheet, skip the data entry</h3>
+        <p>Bulk-import transactions from Excel with fuzzy broker and account-name matching, automatic date-format detection, and clear per-row error reporting if something doesn't match.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Excel import — matched rows and error report</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wide" style="padding:3.5rem 0;">
+    <div class="section-head">
+      <div class="eyebrow">Investments</div>
+      <h2>Every brokerage account, one portfolio</h2>
+      <p>The part most trackers get wrong: consolidating multiple brokers into real numbers, not just a longer list of accounts.</p>
+    </div>
+
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>A heatmap, not just a table</h3>
+        <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance. Switch between List and Table layouts; your column choices persist.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Portfolio table view — P&L heatmap columns</span></div>
+    </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Realised and unrealised, kept separate</h3>
+        <p>Dollar and percent columns for both, with dividends folded into realised P&amp;L — so you can see what you've actually banked versus what's still on paper.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Portfolio — Realised/Unrealised P&L columns</span></div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>Benchmark yourself against the market you actually care about</h3>
+        <p>S&amp;P 500, Nasdaq, FTSE, STI, and regional indices across Europe, Asia-Pacific, and emerging markets — overlaid on your own performance chart with 1/3/5-year range views.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Performance chart — TWR/MWR toggle with benchmark overlay</span></div>
+    </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Dividends, received and upcoming</h3>
+        <p>Per-ticker cumulative totals, projected next-payment dates based on historical cadence, and net-of-withholding-tax figures throughout.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Dividends — received/upcoming tables</span></div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>Watchlists that are actually charts</h3>
+        <p>Multiple custom watchlists as sortable tables, with fullscreen pinch-zoom price charts, buy/sell markers, and OHLC reference lines.</p>
+      </div>
+      <div class="shot shot-phone"><span class="tag">Screenshot</span><span class="desc">Watchlist fullscreen chart</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Watch</div>
+      <h2>How to do the important things</h2>
+      <p>Short walkthroughs — drop your YouTube Shorts embed codes into the placeholders below.</p>
+    </div>
+    <div class="vid-grid">
+      <div class="vid-card">
+        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Adding a multi-broker transaction</span></div>
+        <div class="label">Recording your first trade</div>
+      </div>
+      <div class="vid-card">
+        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Setting up a custom portfolio group</span></div>
+        <div class="label">Grouping your portfolio your way</div>
+      </div>
+      <div class="vid-card">
+        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Reading the TWR vs MWR chart</span></div>
+        <div class="label">Understanding your real return</div>
+      </div>
+      <div class="vid-card">
+        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Importing transactions from Excel</span></div>
+        <div class="label">Bulk import walkthrough</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-row">
+    <div class="brand">Networthy</div>
+    <div>
+      <a href="https://networthy-privacy.tendimensionlabs.com/">Privacy policy</a>
+      <a href="mailto:admin@tendimensionlabs.com">Contact</a>
+    </div>
+  </div>
+</footer>
