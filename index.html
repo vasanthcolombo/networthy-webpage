@@ -21,7 +21,12 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 .num{font-family:var(--font-data); font-variant-numeric:tabular-nums;}
 
 /* Hero */
-.hero{padding:4.5rem 0 3rem; border-bottom:1px solid var(--border);}
+.site-header{padding:1.4rem 0;}
+.site-header .container{display:flex; align-items:center; gap:0.6rem;}
+.site-header .logo-mark{width:32px; height:32px; flex-shrink:0;}
+.site-header .wordmark{font-family:var(--font-display); font-size:1.15rem;}
+
+.hero{padding:1.5rem 0 3rem; border-bottom:1px solid var(--border);}
 .hero .eyebrow{margin-bottom:0.9rem;}
 .hero h1{font-size:2.9rem; line-height:1.12; max-width:34rem;}
 .hero .lede{font-size:1.15rem; color:var(--text-secondary); max-width:33rem; margin-top:1.1rem;}
@@ -42,6 +47,11 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 .shot-hero{aspect-ratio:16/9;}
 .shot-phone{aspect-ratio:9/17; max-width:15rem; margin:0 auto;}
 .shot-wide{aspect-ratio:16/10;}
+
+/* Real images — same sizing classes as .shot; swap the placeholder div for an <img> with these classes */
+img.shot-hero, img.shot-wide, img.shot-phone{
+  display:block; width:100%; object-fit:cover; border-radius:14px; border:1px solid var(--border);
+}
 .vid{ aspect-ratio:9/16; max-width:13rem; margin:0 auto; }
 
 /* Difference section */
@@ -80,7 +90,44 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 .footer .brand{font-family:var(--font-display); font-size:1.1rem;}
 .footer a{color:var(--text-secondary); text-decoration:none; font-size:0.85rem; margin-left:1.3rem;}
 .footer a:hover{color:var(--accent);}
+
+/* Contact modal */
+.modal-overlay{
+  display:none; position:fixed; inset:0; background:rgba(9,13,21,0.55);
+  align-items:center; justify-content:center; padding:1.25rem; z-index:50;
+}
+.modal-box{
+  background:var(--surface); border:1px solid var(--border); border-radius:14px;
+  padding:1.6rem; width:100%; max-width:26rem;
+}
+.modal-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;}
+.modal-head h3{font-size:1.2rem;}
+.modal-close{background:none; border:none; font-size:1.4rem; line-height:1; color:var(--text-secondary); cursor:pointer; padding:0.2rem;}
+.modal-close:hover{color:var(--text);}
+.modal-sub{font-size:0.85rem; color:var(--text-secondary); margin:0 0 1.1rem;}
+.field-label{display:block; font-size:0.78rem; color:var(--text-secondary); margin:0.8rem 0 0.35rem;}
+#contact-form input, #contact-form textarea, #contact-form select{
+  width:100%; font-family:var(--font-body); font-size:0.9rem; color:var(--text);
+  background:var(--surface-2); border:1px solid var(--border); border-radius:8px;
+  padding:0.6rem 0.7rem; resize:vertical;
+}
+#contact-form input:focus, #contact-form textarea:focus, #contact-form select:focus{outline:2px solid var(--accent); outline-offset:1px;}
+#contact-form input[type="file"]{padding:0.4rem 0.5rem; background:transparent; border-style:dashed;}
+.modal-note{font-size:0.76rem; color:var(--text-muted); margin:0.4rem 0 0;}
 </style>
+
+<header class="site-header">
+  <div class="container">
+    <svg class="logo-mark" viewBox="0 0 200 200" role="img" aria-label="Networthy logo">
+      <rect x="0" y="0" width="200" height="200" rx="44" fill="#4A9EFF"/>
+      <rect x="60" y="115" width="22" height="50" rx="6" fill="#FFFFFF"/>
+      <rect x="138" y="40" width="22" height="125" rx="6" fill="#FFFFFF"/>
+      <line x1="82" y1="115" x2="149" y2="35" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="149" cy="35" r="10" fill="#FFFFFF"/>
+    </svg>
+    <span class="wordmark">networthy</span>
+  </div>
+</header>
 
 <section class="hero">
   <div class="container">
@@ -108,6 +155,13 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
       <p>Not a longer feature list — a few specific things that actually require different math, not just a prettier chart.</p>
     </div>
     <div class="diff-list">
+      <div class="diff-item">
+        <div class="diff-mark"></div>
+        <div>
+          <h3>Private investments tracked with a real return, not just a balance</h3>
+          <p>Own a stake in a private business, an angel investment, or a fund with no live price feed? Log a value periodically and Networthy computes XIRR and P&amp;L for it, the same as a brokerage holding. It even knows the difference between a business paying you profit and you actually withdrawing your investment — most apps either ignore private holdings entirely or track a bare balance with no return at all.</p>
+        </div>
+      </div>
       <div class="diff-item">
         <div class="diff-mark"></div>
         <div>
@@ -176,6 +230,13 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
       </div>
       <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Excel import — matched rows and error report</span></div>
     </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Bills and subscriptions, on autopilot</h3>
+        <p>Set up a recurring transaction once — rent, a subscription, a loan payment — with its own cadence, and choose whether it posts automatically or just reminds you. A dedicated Repeats screen shows the running total across everything you've set up.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Repeats screen — recurring transactions and running total</span></div>
+    </div>
   </div>
 </section>
 
@@ -215,12 +276,44 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
       </div>
       <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Dividends — received/upcoming tables</span></div>
     </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>See it by broker, not just by ticker</h3>
+        <p>Toggle between your usual per-ticker Holdings view and a per-broker summary — value, P&amp;L, dividends, XIRR, day change — for whenever the question is "how's this brokerage doing" rather than "how's this stock doing."</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Portfolio — Holdings/Brokers toggle</span></div>
+    </div>
     <div class="tour-row">
       <div class="tour-text">
         <h3>Watchlists that are actually charts</h3>
         <p>Multiple custom watchlists as sortable tables, with fullscreen pinch-zoom price charts, buy/sell markers, and OHLC reference lines.</p>
       </div>
       <div class="shot shot-phone"><span class="tag">Screenshot</span><span class="desc">Watchlist fullscreen chart</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="private-investments">
+  <div class="wide">
+    <div class="section-head">
+      <div class="eyebrow">Private Investments</div>
+      <h2>The holdings no other tracker knows what to do with</h2>
+      <p>A stake in a private business, an angel investment, a fund with no ticker — Networthy tracks these with a real return, not just a static balance.</p>
+    </div>
+
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>Log a value, get a real return</h3>
+        <p>No live price feed for a private holding, so you check in periodically and log what it's worth. From there Networthy computes XIRR and P&amp;L exactly the way it does for a brokerage position — including rolling the value forward for any cash that's moved in or out since your last check-in, so a stale number never quietly undercounts your return.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Log a valuation — value history for a private holding</span></div>
+    </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Getting paid isn't the same as pulling out your investment</h3>
+        <p>When a private business distributes profit, it's often logged as income followed by a transfer to a spending account — which naively looks like a withdrawal. Networthy tracks a running pool of what's actually been earned and nets withdrawals against it first, so a real payout shows up as profit, and only genuine capital withdrawals reduce what you've invested.</p>
+      </div>
+      <div class="shot shot-wide"><span class="tag">Screenshot</span><span class="desc">Private Investments table — XIRR, Profit, Net Invested columns</span></div>
     </div>
   </div>
 </section>
@@ -249,6 +342,10 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
         <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Importing transactions from Excel</span></div>
         <div class="label">Bulk import walkthrough</div>
       </div>
+      <div class="vid-card">
+        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Adding a private investment and logging its first valuation</span></div>
+        <div class="label">Tracking a private holding</div>
+      </div>
     </div>
   </div>
 </section>
@@ -257,8 +354,66 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
   <div class="container footer-row">
     <div class="brand">Networthy</div>
     <div>
-      <a href="https://networthy-privacy.tendimensionlabs.com/">Privacy policy</a>
-      <a href="mailto:admin@tendimensionlabs.com">Contact</a>
+      <a href="https://networthy.tendimensionlabs.com/privacy">Privacy policy</a>
+      <a href="#" onclick="document.getElementById('contact-modal').style.display='flex'; return false;">Contact</a>
     </div>
   </div>
 </footer>
+
+<div id="contact-modal" class="modal-overlay" onclick="if(event.target===this) this.style.display='none';">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Contact us</h3>
+      <button type="button" class="modal-close" aria-label="Close" onclick="document.getElementById('contact-modal').style.display='none';">&times;</button>
+    </div>
+    <p class="modal-sub">This opens your email app with a message addressed to <span class="num">admin@tendimensionlabs.com</span> — fill in the fields below and it'll pre-fill everything for you.</p>
+    <form id="contact-form" onsubmit="sendContact(event)">
+      <label class="field-label" for="contact-email">Your email</label>
+      <input id="contact-email" type="email" required placeholder="you@example.com">
+
+      <label class="field-label" for="contact-reason">What's this about</label>
+      <select id="contact-reason">
+        <option value="Bug">Bug</option>
+        <option value="Appreciation">Appreciation</option>
+        <option value="Payment">Payment</option>
+        <option value="New feature recommendation">New feature recommendation</option>
+        <option value="Account or billing">Account or billing</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label class="field-label" for="contact-subject">Subject</label>
+      <input id="contact-subject" type="text" required placeholder="Short summary">
+
+      <label class="field-label" for="contact-issue">Details</label>
+      <textarea id="contact-issue" required placeholder="What's going on?" rows="4"></textarea>
+
+      <label class="field-label" for="contact-files">Attach screenshots (optional)</label>
+      <input id="contact-files" type="file" accept="image/*" multiple>
+      <p class="modal-note">Email links can't attach files automatically — if you pick any here, we'll list their names in the email as a reminder, but you'll need to drag them into your email app yourself once it opens.</p>
+
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem; text-align:center; border:none; cursor:pointer;">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function sendContact(e){
+  e.preventDefault();
+  var email = document.getElementById('contact-email').value.trim();
+  var reason = document.getElementById('contact-reason').value;
+  var subjectText = document.getElementById('contact-subject').value.trim();
+  var issue = document.getElementById('contact-issue').value.trim();
+  var files = document.getElementById('contact-files').files;
+
+  var bodyLines = ['From: ' + email, 'Reason: ' + reason, '', issue];
+  if (files.length) {
+    var names = [];
+    for (var i = 0; i < files.length; i++) names.push(files[i].name);
+    bodyLines.push('', 'Remember to attach: ' + names.join(', '));
+  }
+
+  var subject = encodeURIComponent('[' + reason + '] ' + subjectText);
+  var body = encodeURIComponent(bodyLines.join('\n'));
+  window.location.href = 'mailto:admin@tendimensionlabs.com?subject=' + subject + '&body=' + body;
+}
+</script>

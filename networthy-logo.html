@@ -1,0 +1,114 @@
+<style>
+:root{
+  --bg:#F3F6FD; --card:#FFFFFF; --border:#E3E8F0;
+  --text-primary:#111827; --text-secondary:#5B6472;
+  --btn-bg:#1D4ED8; --btn-text:#FFFFFF; --btn-bg-hover:#1740B3;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0B1220; --card:#131A2A; --border:#232C40;
+    --text-primary:#EEF2FA; --text-secondary:#9AA6B8;
+    --btn-bg:#3B63D9; --btn-text:#FFFFFF; --btn-bg-hover:#4F74E6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1220; --card:#131A2A; --border:#232C40;
+  --text-primary:#EEF2FA; --text-secondary:#9AA6B8;
+  --btn-bg:#3B63D9; --btn-text:#FFFFFF; --btn-bg-hover:#4F74E6;
+}
+:root[data-theme="light"]{
+  --bg:#F3F6FD; --card:#FFFFFF; --border:#E3E8F0;
+  --text-primary:#111827; --text-secondary:#5B6472;
+  --btn-bg:#1D4ED8; --btn-text:#FFFFFF; --btn-bg-hover:#1740B3;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);}
+.page{
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  gap:1.5rem; padding:3rem 1.5rem; font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--text-primary);
+}
+h1{font-size:1.25rem; font-weight:500; margin:0;}
+.sub{color:var(--text-secondary); font-size:0.9rem; margin:0; text-align:center; max-width:32rem;}
+.assets{display:flex; flex-wrap:wrap; gap:1.25rem; justify-content:center; width:100%; max-width:44rem;}
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:16px;
+  padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:1rem;
+  flex:1 1 240px; max-width:280px;
+}
+.card svg, .card img{width:100%; height:auto; max-width:160px;}
+.card .label{font-size:0.85rem; font-weight:500; color:var(--text-primary);}
+.formats{display:flex; gap:1rem; width:100%; justify-content:center;}
+.format{display:flex; flex-direction:column; align-items:center; gap:0.4rem; flex:1;}
+.format span{font-size:0.7rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.04em;}
+.note{color:var(--text-secondary); font-size:0.8rem; text-align:center; max-width:34rem;}
+.howto{
+  background:var(--card); border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.25rem; font-size:0.85rem; color:var(--text-secondary); max-width:34rem;
+}
+.howto b{color:var(--text-primary); font-weight:500;}
+</style>
+<div class="page">
+  <h1 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Networthy logo downloads</h1>
+  <h1>networthy — logo files</h1>
+  <p class="sub">Icon mark and full lockup, each shown as both SVG and PNG (512&times;512).</p>
+  <div class="howto"><b>To save:</b> right-click (or press and hold, on mobile) any image below and choose "Save image as&hellip;" — these are real images on the page, not download buttons, so it works the same way saving any web image does.</div>
+  <div class="assets">
+    <div class="card">
+      <span class="label">Icon mark</span>
+      <div class="formats">
+        <div class="format"><div id="icon-svg"></div><span>SVG</span></div>
+        <div class="format"><img id="icon-png" alt="Icon mark PNG"/><span>PNG</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label">Full lockup</span>
+      <div class="formats">
+        <div class="format"><div id="lockup-svg"></div><span>SVG</span></div>
+        <div class="format"><img id="lockup-png" alt="Full lockup PNG"/><span>PNG</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">Play Console applies its own corner-rounding and masking to app icons, so if the upload rejects the pre-rounded badge, use the icon mark's underlying square (no rounding) — happy to generate that variant too.</p>
+</div>
+<script>
+var SVGS = {
+  icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
+    '<rect x="0" y="0" width="200" height="200" rx="44" fill="#4A9EFF"/>' +
+    '<rect x="60" y="115" width="22" height="50" rx="6" fill="#FFFFFF"/>' +
+    '<rect x="138" y="40" width="22" height="125" rx="6" fill="#FFFFFF"/>' +
+    '<line x1="82" y1="115" x2="149" y2="35" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>' +
+    '<circle cx="149" cy="35" r="10" fill="#FFFFFF"/>' +
+    '</svg>',
+  lockup: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250">' +
+    '<rect x="0" y="0" width="200" height="200" rx="44" fill="#4A9EFF"/>' +
+    '<rect x="60" y="115" width="22" height="50" rx="6" fill="#FFFFFF"/>' +
+    '<rect x="138" y="40" width="22" height="125" rx="6" fill="#FFFFFF"/>' +
+    '<line x1="82" y1="115" x2="149" y2="35" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>' +
+    '<circle cx="149" cy="35" r="10" fill="#FFFFFF"/>' +
+    '<text x="100" y="236" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="28" font-weight="500" fill="#0F172A">networthy</text>' +
+    '</svg>'
+};
+
+document.getElementById('icon-svg').innerHTML = SVGS.icon;
+document.getElementById('lockup-svg').innerHTML = SVGS.lockup;
+
+function renderPNG(key, imgElId){
+  var size = 512;
+  var img = new Image();
+  var svgData = 'data:image/svg+xml;base64,' + btoa(SVGS[key]);
+  img.onload = function(){
+    var canvas = document.createElement('canvas');
+    var ratio = key === 'lockup' ? 250/200 : 1;
+    canvas.width = size;
+    canvas.height = Math.round(size * ratio);
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    document.getElementById(imgElId).src = canvas.toDataURL('image/png');
+  };
+  img.src = svgData;
+}
+
+renderPNG('icon', 'icon-png');
+renderPNG('lockup', 'lockup-png');
+</script>
