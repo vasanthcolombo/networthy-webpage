@@ -1,4 +1,5 @@
-<style>
+<!DOCTYPE html>
+<html><head><style>
 :root{
   --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9;
   --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3;
@@ -129,14 +130,44 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .modal-note{font-size:0.76rem; color:var(--text-muted); margin:0.4rem 0 0;}
 </style>
 
-<header class="site-header">
+<style id="hero-fix">.hero-shot { max-width: 46rem; } .hero-shot img.shot-full.square { max-width: 46rem; }</style><style id="finances-image-fix">
+#finances-section .wide { max-width: 82rem; }
+#finances-section .tour-row { grid-template-columns: 1fr 1fr; }
+#finances-section img.shot-full.portrait { max-width: 23rem; }
+#finances-section img.shot-full.square { max-width: 36rem; }
+#finances-section img.shot-full.landscape { max-width: 38rem; }
+</style><style id="rest-images-fix">
+#investments-section .wide, #private-investments-section .wide { max-width: 82rem; }
+#investments-section .tour-row, #private-investments-section .tour-row { grid-template-columns: 1fr 1fr; }
+#investments-section img.shot-full.portrait, #private-investments-section img.shot-full.portrait { max-width: 23rem; }
+#investments-section img.shot-full.square, #private-investments-section img.shot-full.square { max-width: 36rem; }
+#investments-section img.shot-full.landscape, #private-investments-section img.shot-full.landscape { max-width: 38rem; }
+</style><style id="lightbox-fix">
+.modal-overlay > img { max-width: min(95vw, 68rem) !important; max-height: 92vh !important; }
+
+img.shot-full.square[src*="charts.png"] { aspect-ratio: 2160 / 2114 !important; }
+
+img.shot-full.square[src*="performance.png"] { aspect-ratio: 2160 / 2300 !important; }
+
+img.shot-full.portrait[src*="transactions.png"] { aspect-ratio: 1080 / 2151 !important; }
+img.shot-full.portrait[src*="portfolio.png"] { aspect-ratio: 1080 / 2300 !important; }
+img.shot-full.landscape[src*="stock_holdings.png"] { aspect-ratio: 2400 / 1080 !important; }
+img.shot-full.portrait[src*="dividends.png"] { aspect-ratio: 1080 / 2297 !important; }
+img.shot-full.portrait[src*="custom_groups.png"] { aspect-ratio: 1080 / 2283 !important; }
+img.shot-full.portrait[src*="watchlist.png"] { aspect-ratio: 1080 / 2252 !important; }
+img.shot-full.portrait[src*="private_investments.png"] { aspect-ratio: 1080 / 2289 !important; }
+
+img.shot-full.square[src*="dashboard-networthy_piechart.png"] { aspect-ratio: 2172 / 2286 !important; }
+img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important; }
+img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; }
+</style></head><body><header class="site-header">
   <div class="container">
     <svg class="logo-mark" viewBox="0 0 200 200" role="img" aria-label="Networthy logo">
-      <rect x="0" y="0" width="200" height="200" rx="44" fill="#4A9EFF"/>
-      <rect x="60" y="115" width="22" height="50" rx="6" fill="#FFFFFF"/>
-      <rect x="138" y="40" width="22" height="125" rx="6" fill="#FFFFFF"/>
-      <line x1="82" y1="115" x2="149" y2="35" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
-      <circle cx="149" cy="35" r="10" fill="#FFFFFF"/>
+      <rect x="0" y="0" width="200" height="200" rx="44" fill="#4A9EFF"></rect>
+      <rect x="60" y="115" width="22" height="50" rx="6" fill="#FFFFFF"></rect>
+      <rect x="138" y="40" width="22" height="125" rx="6" fill="#FFFFFF"></rect>
+      <line x1="82" y1="115" x2="149" y2="35" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"></line>
+      <circle cx="149" cy="35" r="10" fill="#FFFFFF"></circle>
     </svg>
     <span class="wordmark">networthy</span>
   </div>
@@ -152,7 +183,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
       <a class="btn btn-ghost" href="#difference">See what's different</a>
     </div>
     <div class="hero-shot">
-      <img class="shot-full square" src="images/dashboard-networthy_piechart.png" alt="Networth pie charts for assets and liabilities">
+      <img class="shot-full square" src="images/dashboard-networthy_piechart.png" alt="Networth pie charts for assets and liabilities" style="">
     </div>
   </div>
 </section>
@@ -218,7 +249,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="finances-section">
   <div class="wide">
     <div class="section-head">
       <div class="eyebrow">Finances</div>
@@ -240,7 +271,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
       </div>
         <img class="shot-full square" src="images/accounts.png" alt="Accounts screen — grouped, Assets/Liabilities tabs">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Bills and subscriptions, on autopilot</h3>
         <p>Set up a recurring transaction once — rent, a subscription, a loan payment — wit h its own cadence, and choose whether it posts automatically or just reminds you. A dedicated Repeats screen shows the running total across everything you've set up.</p>
@@ -250,7 +281,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
   </div>
 </section>
 
-<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" id="investments-section">
   <div class="wide" style="padding:3.5rem 0;">
     <div class="section-head">
       <div class="eyebrow">Investments</div>
@@ -270,7 +301,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
         <h3>A heatmap, not just a table</h3>
         <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance, and your column choices persist across sessions.</p>
       </div>
-      <img class="shot-full landscape" src="images/stock_holdings.png" alt="Portfolio table view — P&L heatmap columns">
+      <img class="shot-full landscape" src="images/stock_holdings.png" alt="Portfolio table view — P&amp;L heatmap columns">
     </div>
     <div class="tour-row">
       <div class="tour-text">
@@ -286,38 +317,38 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
       </div>
       <img class="shot-full portrait" src="images/dividends.png" alt="Dividends — received/upcoming tables">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>See it by broker, not just by ticker</h3>
         <p>Toggle between your usual per-ticker Holdings view and a per-broker summary — value, P&amp;L, dividends, XIRR, day change — for whenever the question is "how's this brokerage doing" rather than "how's this stock doing."</p>
       </div>
       <img class="shot-full landscape" src="images/brokers.png" alt="Portfolio — Holdings/Brokers toggle">
     </div>
-    <div class="tour-row">
+    <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Your own categories, not someone else's taxonomy</h3>
         <p>Define custom groupings — like "By Country" or a thesis-driven bucket such as "By Growth Bets" — and Networthy filters your Portfolio, Transactions, and Performance by them instantly. The same lens everywhere, not a one-off tag you set and forget.</p>
       </div>
       <img class="shot-full portrait" src="images/custom_groups.png" alt="Portfolio — custom grouping tabs and filtered view">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Watchlists, however many you want</h3>
         <p>Set up multiple custom watchlists as sortable tables — track what you're actually considering, organized however makes sense to you, kept separate from what you already own.</p>
       </div>
       <img class="shot-full portrait" src="images/watchlist.png" alt="Watchlist — multiple custom watchlists as sortable tables">
     </div>
-    <div class="tour-row">
+    <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Charts that go full screen</h3>
         <p>Pinch-zoom price charts with buy/sell markers and OHLC reference lines — for any ticker, watched or held.</p>
       </div>
-      <img class="shot-full square" src="images/charts.png" alt="Watchlist fullscreen chart">
+      <img class="shot-full square" src="images/charts.png" alt="Watchlist fullscreen chart" style="">
     </div>
   </div>
 </section>
 
-<section class="section" id="private-investments">
+<section class="section" id="private-investments-section">
   <div class="wide">
     <div class="section-head">
       <div class="eyebrow">Private Investments</div>
@@ -381,12 +412,12 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
   <div class="modal-box">
     <div class="modal-head">
       <h3>Contact us</h3>
-      <button type="button" class="modal-close" aria-label="Close" onclick="document.getElementById('contact-modal').style.display='none';">&times;</button>
+      <button type="button" class="modal-close" aria-label="Close" onclick="document.getElementById('contact-modal').style.display='none';">×</button>
     </div>
     <p class="modal-sub">This opens your email app with a message addressed to <span class="num">admin@tendimensionlabs.com</span> — fill in the fields below and it'll pre-fill everything for you.</p>
     <form id="contact-form" onsubmit="sendContact(event)">
       <label class="field-label" for="contact-email">Your email</label>
-      <input id="contact-email" type="email" required placeholder="you@example.com">
+      <input id="contact-email" type="email" required="" placeholder="you@example.com">
 
       <label class="field-label" for="contact-reason">What's this about</label>
       <select id="contact-reason">
@@ -399,13 +430,13 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
       </select>
 
       <label class="field-label" for="contact-subject">Subject</label>
-      <input id="contact-subject" type="text" required placeholder="Short summary">
+      <input id="contact-subject" type="text" required="" placeholder="Short summary">
 
       <label class="field-label" for="contact-issue">Details</label>
-      <textarea id="contact-issue" required placeholder="What's going on?" rows="4"></textarea>
+      <textarea id="contact-issue" required="" placeholder="What's going on?" rows="4"></textarea>
 
       <label class="field-label" for="contact-files">Attach screenshots (optional)</label>
-      <input id="contact-files" type="file" accept="image/*" multiple>
+      <input id="contact-files" type="file" accept="image/*" multiple="">
       <p class="modal-note">Email links can't attach files automatically — if you pick any here, we'll list their names in the email as a reminder, but you'll need to drag them into your email app yourself once it opens.</p>
 
       <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem; text-align:center; border:none; cursor:pointer;">Send</button>
@@ -413,8 +444,8 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
   </div>
 </div>
 
-<div id="lightbox" class="modal-overlay" onclick="this.style.display='none';">
-  <img id="lightbox-img" src="" alt="" style="max-width:min(92vw,40rem); max-height:88vh; width:auto; height:auto; object-fit:contain; border-radius:10px; cursor:zoom-out;">
+<div id="lightbox" class="modal-overlay" onclick="this.style.display='none';" style="display: none;">
+  <img id="lightbox-img" src="file:///D:/networthy-webpage/images/brokers.png" alt="Portfolio — Holdings/Brokers toggle" style="max-width:min(92vw,40rem); max-height:88vh; width:auto; height:auto; object-fit:contain; border-radius:10px; cursor:zoom-out;">
 </div>
 
 <script>
@@ -448,3 +479,4 @@ function sendContact(e){
   window.location.href = 'mailto:admin@tendimensionlabs.com?subject=' + subject + '&body=' + body;
 }
 </script>
+</body></html>
