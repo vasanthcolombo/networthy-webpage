@@ -51,7 +51,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 
 /* Real images — same sizing classes as .shot; swap the placeholder div for an <img> with these classes */
 img.shot-hero, img.shot-wide, img.shot-phone{
-  display:block; width:100%; object-fit:cover; border-radius:14px; border:1px solid var(--border);
+  display:block; width:100%; object-fit:contain; border-radius:14px; border:1px solid var(--border);
 }
 /* Real screenshots — shape-matched, not forced into one uniform box: each
    screenshot gets a box close to its own native aspect ratio (tall phone
@@ -60,7 +60,7 @@ img.shot-hero, img.shot-wide, img.shot-phone{
    sliver that does get cropped to fit. Tap any image to see it full-size —
    see the lightbox script at the bottom of the page. */
 img.shot-full{
-  display:block; width:100%; margin:0; object-fit:cover; object-position:top;
+  display:block; width:100%; margin:0; object-fit:contain; object-position:top;
   border-radius:14px; border:1px solid var(--border); cursor:zoom-in;
 }
 img.shot-full.portrait{ max-width:18rem; aspect-ratio:9/17; }
