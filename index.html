@@ -87,11 +87,9 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .tour-group-head h2{font-size:1.6rem;}
 .tour-group-head .count{color:var(--text-muted); font-family:var(--font-data); font-size:0.8rem;}
 .tour-row{display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
-.tour-row:nth-child(even .tour-row){}
-.tour-row.reverse .tour-text{order:2;}
 .tour-text h3{font-family:var(--font-body); font-weight:500; font-size:1.2rem; margin-bottom:0.5rem;}
 .tour-text p{color:var(--text-secondary); font-size:0.93rem; margin:0;}
-@media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} .tour-row.reverse .tour-text{order:0;} }
+@media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} }
 
 /* Video */
 .vid-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.5rem;}
@@ -160,7 +158,7 @@ img.shot-full.portrait[src*="private_investments.png"] { aspect-ratio: 1080 / 22
 img.shot-full.square[src*="dashboard-networthy_piechart.png"] { aspect-ratio: 2172 / 2286 !important; }
 img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important; }
 #investments-section .tour-row.brokers-row { grid-template-columns: 0.7fr 1.3fr; }
-#investments-section .tour-row.reverse.holdings-row { grid-template-columns: 1.3fr 0.7fr; }
+#investments-section .tour-row.holdings-row { grid-template-columns: 0.7fr 1.3fr; }
 #finances-section .tour-row.repeats-row { grid-template-columns: 0.7fr 1.3fr; }
 img.shot-full.landscape[src*="recurring_transactions.png"] { max-width: 62rem !important; }
 img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; max-width: 62rem !important; }
@@ -269,7 +267,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full portrait" src="images/transactions.png" alt="Finances transactions list — a trade or dividend from Investments sitting alongside everyday expenses">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Accounts, grouped your way</h3>
         <p>Group accounts however makes sense to you, split Assets from Liabilities, hide zero-balance accounts, and correct a balance with a backdated entry instead of silently overwriting history.</p>
@@ -301,7 +299,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full portrait" src="images/portfolio.png" alt="Portfolio — Public Markets summary across all brokers">
     </div>
-    <div class="tour-row reverse holdings-row">
+    <div class="tour-row holdings-row">
       <div class="tour-text">
         <h3>A heatmap, not just a table</h3>
         <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance, and your column choices persist across sessions.</p>
@@ -315,7 +313,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full square" src="images/performance.png" alt="Performance chart — TWR/MWR toggle with benchmark overlay">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Dividends, received and upcoming</h3>
         <p>Per-ticker cumulative totals, projected next-payment dates based on historical cadence, and net-of-withholding-tax figures throughout.</p>
@@ -329,7 +327,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full landscape" src="images/brokers.png" alt="Portfolio — Holdings/Brokers toggle">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Your own categories, not someone else's taxonomy</h3>
         <p>Define custom groupings — like "By Country" or a thesis-driven bucket such as "By Growth Bets" — and Networthy filters your Portfolio, Transactions, and Performance by them instantly. The same lens everywhere, not a one-off tag you set and forget.</p>
@@ -343,7 +341,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full square" src="images/markets.png" alt="Markets screen — customizable indices/futures/commodities strip, watchlist, and a news feed sourced from your holdings">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Watchlists, however many you want</h3>
         <p>Set up multiple custom watchlists as sortable tables — track what you're actually considering, organized however makes sense to you, kept separate from what you already own.</p>
