@@ -162,6 +162,13 @@ img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important
 img.shot-full.landscape[src*="recurring_transactions.png"] { max-width: 62rem !important; }
 img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; max-width: 62rem !important; }
 img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important; }
+</style><style id="section-shades">
+/* Subtle alternating tint per section, using the existing theme tokens
+   (so it stays correct in both light and dark mode) instead of one-off
+   colors — bg, then surface-2, then bg, surface (investments already had
+   this), surface-2, bg. */
+#difference { background: var(--surface-2); border-bottom: 1px solid var(--border); }
+#private-investments-section { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 </style></head><body><header class="site-header">
   <div class="container">
     <svg class="logo-mark" viewBox="0 0 200 200" role="img" aria-label="Networthy logo">
@@ -375,7 +382,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="watch-section">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Watch</div>
