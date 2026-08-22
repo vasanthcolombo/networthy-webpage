@@ -86,7 +86,10 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .tour-group-head{display:flex; align-items:baseline; gap:0.7rem; margin-bottom:1.6rem;}
 .tour-group-head h2{font-size:1.6rem;}
 .tour-group-head .count{color:var(--text-muted); font-family:var(--font-data); font-size:0.8rem;}
-.tour-row{display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
+/* Text column is a fixed width, not a fraction of the row — so every row's
+   image column starts at the exact same x position regardless of how wide
+   that particular screenshot's own max-width is. */
+.tour-row{display:grid; grid-template-columns:28rem 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
 .tour-text h3{font-family:var(--font-body); font-weight:500; font-size:1.2rem; margin-bottom:0.5rem;}
 .tour-text p{color:var(--text-secondary); font-size:0.93rem; margin:0;}
 @media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} }
@@ -130,13 +133,11 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 
 <style id="hero-fix">.hero-shot { max-width: 46rem; } .hero-shot img.shot-full.square { max-width: 46rem; }</style><style id="finances-image-fix">
 #finances-section .wide { max-width: 82rem; }
-#finances-section .tour-row { grid-template-columns: 1fr 1fr; }
 #finances-section img.shot-full.portrait { max-width: 23rem; }
 #finances-section img.shot-full.square { max-width: 36rem; }
 #finances-section img.shot-full.landscape { max-width: 38rem; }
 </style><style id="rest-images-fix">
 #investments-section .wide, #private-investments-section .wide { max-width: 82rem; }
-#investments-section .tour-row, #private-investments-section .tour-row { grid-template-columns: 1fr 1fr; }
 #investments-section img.shot-full.portrait, #private-investments-section img.shot-full.portrait { max-width: 23rem; }
 #investments-section img.shot-full.square, #private-investments-section img.shot-full.square { max-width: 36rem; }
 #investments-section img.shot-full.landscape, #private-investments-section img.shot-full.landscape { max-width: 38rem; }
@@ -157,9 +158,6 @@ img.shot-full.portrait[src*="private_investments.png"] { aspect-ratio: 1080 / 22
 
 img.shot-full.square[src*="dashboard-networthy_piechart.png"] { aspect-ratio: 2172 / 2286 !important; }
 img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important; }
-#investments-section .tour-row.brokers-row { grid-template-columns: 0.7fr 1.3fr; }
-#investments-section .tour-row.holdings-row { grid-template-columns: 0.7fr 1.3fr; }
-#finances-section .tour-row.repeats-row { grid-template-columns: 0.7fr 1.3fr; }
 img.shot-full.landscape[src*="recurring_transactions.png"] { max-width: 62rem !important; }
 img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; max-width: 62rem !important; }
 img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important; }
@@ -274,7 +272,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
         <img class="shot-full square" src="images/accounts.png" alt="Accounts screen — grouped, Assets/Liabilities tabs">
     </div>
-    <div class="tour-row repeats-row">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>Bills and subscriptions, on autopilot</h3>
         <p>Set up a recurring transaction once — rent, a subscription, a loan payment — wit h its own cadence, and choose whether it posts automatically or just reminds you. A dedicated Repeats screen shows the running total across everything you've set up.</p>
@@ -299,7 +297,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full portrait" src="images/portfolio.png" alt="Portfolio — Public Markets summary across all brokers">
     </div>
-    <div class="tour-row holdings-row">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>A heatmap, not just a table</h3>
         <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance, and your column choices persist across sessions.</p>
@@ -320,7 +318,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full portrait" src="images/dividends.png" alt="Dividends — received/upcoming tables">
     </div>
-    <div class="tour-row brokers-row">
+    <div class="tour-row">
       <div class="tour-text">
         <h3>See it by broker, not just by ticker</h3>
         <p>Toggle between your usual per-ticker Holdings view and a per-broker summary — value, P&amp;L, dividends, XIRR, day change — for whenever the question is "how's this brokerage doing" rather than "how's this stock doing."</p>
