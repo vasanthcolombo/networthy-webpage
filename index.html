@@ -89,7 +89,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 /* Text column is a fixed width, not a fraction of the row — so every row's
    image column starts at the exact same x position regardless of how wide
    that particular screenshot's own max-width is. */
-.tour-row{display:grid; grid-template-columns:28rem 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
+.tour-row{display:grid; grid-template-columns:28rem 1fr; gap:4.5rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
 .tour-text h3{font-family:var(--font-body); font-weight:500; font-size:1.2rem; margin-bottom:0.5rem;}
 .tour-text p{color:var(--text-secondary); font-size:0.93rem; margin:0;}
 @media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} }
@@ -133,6 +133,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 
 <style id="hero-fix">.hero-shot { max-width: 46rem; } .hero-shot img.shot-full.square { max-width: 46rem; }</style><style id="finances-image-fix">
 #finances-section .wide { max-width: 82rem; }
+#finances-section .section-head, #investments-section .section-head, #private-investments-section .section-head { margin-left: auto; margin-right: auto; text-align: center; }
 #finances-section img.shot-full.portrait { max-width: 23rem; }
 #finances-section img.shot-full.square { max-width: 36rem; }
 #finances-section img.shot-full.landscape { max-width: 38rem; }
