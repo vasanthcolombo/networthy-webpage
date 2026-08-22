@@ -151,7 +151,7 @@ img.shot-full.square[src*="performance.png"] { aspect-ratio: 2160 / 2300 !import
 
 img.shot-full.portrait[src*="transactions.png"] { aspect-ratio: 1080 / 2151 !important; }
 img.shot-full.portrait[src*="portfolio.png"] { aspect-ratio: 1080 / 2300 !important; }
-img.shot-full.landscape[src*="stock_holdings.png"] { aspect-ratio: 2400 / 1080 !important; }
+img.shot-full.landscape[src*="stock_holdings.png"] { aspect-ratio: 2400 / 1080 !important; max-width: 62rem !important; }
 img.shot-full.portrait[src*="dividends.png"] { aspect-ratio: 1080 / 2297 !important; }
 img.shot-full.portrait[src*="custom_groups.png"] { aspect-ratio: 1080 / 2283 !important; }
 img.shot-full.portrait[src*="watchlist.png"] { aspect-ratio: 1080 / 2252 !important; }
@@ -160,6 +160,7 @@ img.shot-full.portrait[src*="private_investments.png"] { aspect-ratio: 1080 / 22
 img.shot-full.square[src*="dashboard-networthy_piechart.png"] { aspect-ratio: 2172 / 2286 !important; }
 img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important; }
 #investments-section .tour-row.brokers-row { grid-template-columns: 0.7fr 1.3fr; }
+#investments-section .tour-row.reverse.holdings-row { grid-template-columns: 1.3fr 0.7fr; }
 #finances-section .tour-row.repeats-row { grid-template-columns: 0.7fr 1.3fr; }
 img.shot-full.landscape[src*="recurring_transactions.png"] { max-width: 62rem !important; }
 img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; max-width: 62rem !important; }
@@ -300,7 +301,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
       </div>
       <img class="shot-full portrait" src="images/portfolio.png" alt="Portfolio — Public Markets summary across all brokers">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row reverse holdings-row">
       <div class="tour-text">
         <h3>A heatmap, not just a table</h3>
         <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance, and your column choices persist across sessions.</p>
