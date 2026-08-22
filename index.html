@@ -53,17 +53,19 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 img.shot-hero, img.shot-wide, img.shot-phone{
   display:block; width:100%; object-fit:contain; border-radius:14px; border:1px solid var(--border);
 }
-/* Real screenshots — sized by a fixed height with width:auto, so every
-   image renders at its own true aspect ratio (no cropping, no letterboxing,
-   no resolution loss on tall or wide shots). The tour-row grid column that
-   holds the image is "auto"-sized to match, so a wide screenshot naturally
-   claims a wider column and a tall narrow one claims a narrow column — see
-   .tour-row below. Tap any image to see it full-size — lightbox script is
-   at the bottom of the page. */
+/* Real screenshots — shape-matched, not forced into one uniform box: each
+   screenshot gets a box close to its own native aspect ratio (tall phone
+   screenshot, near-square merged pair, or wide landscape crop), so almost
+   nothing gets cropped. object-position:top keeps headers visible on the
+   sliver that does get cropped to fit. Tap any image to see it full-size —
+   see the lightbox script at the bottom of the page. */
 img.shot-full{
-  display:block; height:22rem; width:auto; max-width:100%; margin:0;
+  display:block; width:100%; margin:0; object-fit:contain; object-position:top;
   border-radius:14px; border:1px solid var(--border); cursor:zoom-in;
 }
+img.shot-full.portrait{ max-width:18rem; aspect-ratio:9/17; }
+img.shot-full.square{ max-width:26rem; aspect-ratio:20/21; }
+img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .vid{ aspect-ratio:9/16; max-width:13rem; margin:0 auto; }
 
 /* Difference section */
@@ -84,20 +86,12 @@ img.shot-full{
 .tour-group-head{display:flex; align-items:baseline; gap:0.7rem; margin-bottom:1.6rem;}
 .tour-group-head h2{font-size:1.6rem;}
 .tour-group-head .count{color:var(--text-muted); font-family:var(--font-data); font-size:0.8rem;}
-/* Flexbox, not grid: the image sizes to its own true width (fixed height,
-   width:auto — see img.shot-full above), and .tour-text caps out at 34rem
-   and can shrink below that if a wide image needs the room. Both sit flush
-   next to each other with just the row gap between them; any left-over
-   width in the row collects at one end instead of splitting the pair apart
-   the way a "1fr" grid column would. .reverse flips the packing direction
-   so the pair sits flush to the right instead of the left. */
-.tour-row{display:flex; align-items:center; gap:2.2rem; padding:2rem 0; border-top:1px solid var(--border);}
-.tour-row.reverse{flex-direction:row-reverse;}
-.tour-text{flex:0 1 34rem; min-width:0;}
-img.shot-full{flex:0 0 auto;}
+.tour-row{display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; align-items:center; padding:2rem 0; border-top:1px solid var(--border);}
+.tour-row:nth-child(even .tour-row){}
+.tour-row.reverse .tour-text{order:2;}
 .tour-text h3{font-family:var(--font-body); font-weight:500; font-size:1.2rem; margin-bottom:0.5rem;}
 .tour-text p{color:var(--text-secondary); font-size:0.93rem; margin:0;}
-@media (max-width: 720px){ .tour-row{flex-direction:column; align-items:stretch;} .tour-row.reverse{flex-direction:column;} .tour-text{flex:none;} img.shot-full{height:auto; width:100%; flex:none;} }
+@media (max-width: 720px){ .tour-row{grid-template-columns:1fr;} .tour-row.reverse .tour-text{order:0;} }
 
 /* Video */
 .vid-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.5rem;}
@@ -136,15 +130,41 @@ img.shot-full{flex:0 0 auto;}
 .modal-note{font-size:0.76rem; color:var(--text-muted); margin:0.4rem 0 0;}
 </style>
 
-<style id="hero-fix">
-.hero-shot { max-width: 46rem; }
-.hero-shot img.shot-full { height: auto; width: 100%; max-width: 100%; }
-</style><style id="finances-image-fix">
+<style id="hero-fix">.hero-shot { max-width: 46rem; } .hero-shot img.shot-full.square { max-width: 46rem; }</style><style id="finances-image-fix">
 #finances-section .wide { max-width: 82rem; }
+#finances-section .tour-row { grid-template-columns: 1fr 1fr; }
+#finances-section img.shot-full.portrait { max-width: 23rem; }
+#finances-section img.shot-full.square { max-width: 36rem; }
+#finances-section img.shot-full.landscape { max-width: 38rem; }
 </style><style id="rest-images-fix">
 #investments-section .wide, #private-investments-section .wide { max-width: 82rem; }
+#investments-section .tour-row, #private-investments-section .tour-row { grid-template-columns: 1fr 1fr; }
+#investments-section img.shot-full.portrait, #private-investments-section img.shot-full.portrait { max-width: 23rem; }
+#investments-section img.shot-full.square, #private-investments-section img.shot-full.square { max-width: 36rem; }
+#investments-section img.shot-full.landscape, #private-investments-section img.shot-full.landscape { max-width: 38rem; }
 </style><style id="lightbox-fix">
 .modal-overlay > img { max-width: min(95vw, 68rem) !important; max-height: 92vh !important; }
+
+img.shot-full.square[src*="charts.png"] { aspect-ratio: 2160 / 2114 !important; }
+
+img.shot-full.square[src*="performance.png"] { aspect-ratio: 2160 / 2300 !important; }
+
+img.shot-full.portrait[src*="transactions.png"] { aspect-ratio: 1080 / 2151 !important; }
+img.shot-full.portrait[src*="portfolio.png"] { aspect-ratio: 1080 / 2300 !important; }
+img.shot-full.landscape[src*="stock_holdings.png"] { aspect-ratio: 2400 / 1080 !important; max-width: 62rem !important; }
+img.shot-full.portrait[src*="dividends.png"] { aspect-ratio: 1080 / 2297 !important; }
+img.shot-full.portrait[src*="custom_groups.png"] { aspect-ratio: 1080 / 2283 !important; }
+img.shot-full.portrait[src*="watchlist.png"] { aspect-ratio: 1080 / 2252 !important; }
+img.shot-full.portrait[src*="private_investments.png"] { aspect-ratio: 1080 / 2289 !important; }
+
+img.shot-full.square[src*="dashboard-networthy_piechart.png"] { aspect-ratio: 2172 / 2286 !important; }
+img.shot-full.square[src*="accounts.png"] { aspect-ratio: 2160 / 2279 !important; }
+#investments-section .tour-row.brokers-row { grid-template-columns: 0.7fr 1.3fr; }
+#investments-section .tour-row.reverse.holdings-row { grid-template-columns: 1.3fr 0.7fr; }
+#finances-section .tour-row.repeats-row { grid-template-columns: 0.7fr 1.3fr; }
+img.shot-full.landscape[src*="recurring_transactions.png"] { max-width: 62rem !important; }
+img.shot-full.landscape[src*="brokers.png"] { aspect-ratio: 2400 / 995 !important; max-width: 62rem !important; }
+img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important; }
 </style></head><body><header class="site-header">
   <div class="container">
     <svg class="logo-mark" viewBox="0 0 200 200" role="img" aria-label="Networthy logo">
@@ -247,21 +267,21 @@ img.shot-full{flex:0 0 auto;}
         <h3>One net worth number, not two apps</h3>
         <p>Every buy, sell, dividend, and trading cost from Investments posts automatically into your Finances ledger — so your net worth reflects your whole financial life, not just your bank balance.</p>
       </div>
-      <img class="shot-full" src="images/transactions.png" alt="Finances transactions list — a trade or dividend from Investments sitting alongside everyday expenses">
+      <img class="shot-full portrait" src="images/transactions.png" alt="Finances transactions list — a trade or dividend from Investments sitting alongside everyday expenses">
     </div>
     <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Accounts, grouped your way</h3>
         <p>Group accounts however makes sense to you, split Assets from Liabilities, hide zero-balance accounts, and correct a balance with a backdated entry instead of silently overwriting history.</p>
       </div>
-        <img class="shot-full" src="images/accounts.png" alt="Accounts screen — grouped, Assets/Liabilities tabs">
+        <img class="shot-full square" src="images/accounts.png" alt="Accounts screen — grouped, Assets/Liabilities tabs">
     </div>
-    <div class="tour-row">
+    <div class="tour-row repeats-row">
       <div class="tour-text">
         <h3>Bills and subscriptions, on autopilot</h3>
         <p>Set up a recurring transaction once — rent, a subscription, a loan payment — wit h its own cadence, and choose whether it posts automatically or just reminds you. A dedicated Repeats screen shows the running total across everything you've set up.</p>
       </div>
-      <img class="shot-full" src="images/recurring_transactions.png" alt="Repeats screen — recurring transactions and running total">
+      <img class="shot-full landscape" src="images/recurring_transactions.png" alt="Repeats screen — recurring transactions and running total">
     </div>
   </div>
 </section>
@@ -279,63 +299,63 @@ img.shot-full{flex:0 0 auto;}
         <h3>Everything you own across every broker, one screen</h3>
         <p>Value, P&amp;L, dividends, net invested, cash balance, and total invested — for your entire public portfolio, refreshed live and shown before you even scroll to a single ticker.</p>
       </div>
-      <img class="shot-full" src="images/portfolio.png" alt="Portfolio — Public Markets summary across all brokers">
+      <img class="shot-full portrait" src="images/portfolio.png" alt="Portfolio — Public Markets summary across all brokers">
     </div>
-    <div class="tour-row reverse">
+    <div class="tour-row reverse holdings-row">
       <div class="tour-text">
         <h3>A heatmap, not just a table</h3>
         <p>Sortable, customizable columns — day/YTD change, high/low, volume, exchange — with a color-coded P&amp;L heatmap across your whole portfolio at a glance, and your column choices persist across sessions.</p>
       </div>
-      <img class="shot-full" src="images/stock_holdings.png" alt="Portfolio table view — P&amp;L heatmap columns">
+      <img class="shot-full landscape" src="images/stock_holdings.png" alt="Portfolio table view — P&amp;L heatmap columns">
     </div>
     <div class="tour-row">
       <div class="tour-text">
         <h3>Benchmark yourself against the market you actually care about</h3>
         <p>S&amp;P 500, Nasdaq, FTSE, STI, and regional indices across Europe, Asia-Pacific, and emerging markets — overlaid on your own performance chart with 1/3/5-year range views.</p>
       </div>
-      <img class="shot-full" src="images/performance.png" alt="Performance chart — TWR/MWR toggle with benchmark overlay">
+      <img class="shot-full square" src="images/performance.png" alt="Performance chart — TWR/MWR toggle with benchmark overlay">
     </div>
     <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Dividends, received and upcoming</h3>
         <p>Per-ticker cumulative totals, projected next-payment dates based on historical cadence, and net-of-withholding-tax figures throughout.</p>
       </div>
-      <img class="shot-full" src="images/dividends.png" alt="Dividends — received/upcoming tables">
+      <img class="shot-full portrait" src="images/dividends.png" alt="Dividends — received/upcoming tables">
     </div>
-    <div class="tour-row">
+    <div class="tour-row brokers-row">
       <div class="tour-text">
         <h3>See it by broker, not just by ticker</h3>
         <p>Toggle between your usual per-ticker Holdings view and a per-broker summary — value, P&amp;L, dividends, XIRR, day change — for whenever the question is "how's this brokerage doing" rather than "how's this stock doing."</p>
       </div>
-      <img class="shot-full" src="images/brokers.png" alt="Portfolio — Holdings/Brokers toggle">
+      <img class="shot-full landscape" src="images/brokers.png" alt="Portfolio — Holdings/Brokers toggle">
     </div>
     <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Your own categories, not someone else's taxonomy</h3>
         <p>Define custom groupings — like "By Country" or a thesis-driven bucket such as "By Growth Bets" — and Networthy filters your Portfolio, Transactions, and Performance by them instantly. The same lens everywhere, not a one-off tag you set and forget.</p>
       </div>
-      <img class="shot-full" src="images/custom_groups.png" alt="Portfolio — custom grouping tabs and filtered view">
+      <img class="shot-full portrait" src="images/custom_groups.png" alt="Portfolio — custom grouping tabs and filtered view">
     </div>
     <div class="tour-row">
       <div class="tour-text">
         <h3>A markets pulse, tuned to what you actually hold</h3>
         <p>A customizable, reorderable strip of indices, futures, and commodities, plus top movers, trending stocks, and a news feed pulled from your own watchlist and holdings — not generic headlines you'd get anywhere.</p>
       </div>
-      <img class="shot-full" src="images/markets.png" alt="Markets screen — customizable indices/futures/commodities strip, watchlist, and a news feed sourced from your holdings">
+      <img class="shot-full square" src="images/markets.png" alt="Markets screen — customizable indices/futures/commodities strip, watchlist, and a news feed sourced from your holdings">
     </div>
     <div class="tour-row reverse">
       <div class="tour-text">
         <h3>Watchlists, however many you want</h3>
         <p>Set up multiple custom watchlists as sortable tables — track what you're actually considering, organized however makes sense to you, kept separate from what you already own.</p>
       </div>
-      <img class="shot-full" src="images/watchlist.png" alt="Watchlist — multiple custom watchlists as sortable tables">
+      <img class="shot-full portrait" src="images/watchlist.png" alt="Watchlist — multiple custom watchlists as sortable tables">
     </div>
     <div class="tour-row">
       <div class="tour-text">
         <h3>Charts that go full screen</h3>
         <p>Pinch-zoom price charts with buy/sell markers and OHLC reference lines — for any ticker, watched or held.</p>
       </div>
-      <img class="shot-full" src="images/charts.png" alt="Watchlist fullscreen chart" style="">
+      <img class="shot-full square" src="images/charts.png" alt="Watchlist fullscreen chart" style="">
     </div>
   </div>
 </section>
@@ -353,7 +373,7 @@ img.shot-full{flex:0 0 auto;}
         <h3>Log a value, get a real return — profit handled correctly</h3>
         <p>No live price feed for a private holding, so you check in periodically and log what it's worth — Networthy computes XIRR and P&amp;L the same way it does for a brokerage position, rolling the value forward for any cash that's moved since your last check-in. It also knows the difference between a business paying you profit and you withdrawing your investment: a running pool of what's actually been earned nets against withdrawals first, so a real payout shows up as profit, not a capital pull-out.</p>
       </div>
-      <img class="shot-full" src="images/private_investments.png" alt="Private Investments table — XIRR, Profit, Net Invested columns">
+      <img class="shot-full portrait" src="images/private_investments.png" alt="Private Investments table — XIRR, Profit, Net Invested columns">
     </div>
   </div>
 </section>
