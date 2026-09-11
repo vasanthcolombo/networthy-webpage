@@ -107,6 +107,16 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .footer .brand{font-family:var(--font-display); font-size:1.1rem;}
 .footer a{color:var(--text-secondary); text-decoration:none; font-size:0.85rem; margin-left:1.3rem;}
 .footer a:hover{color:var(--accent);}
+.footer-contact{
+  display:flex; flex-wrap:wrap; gap:0.4rem 1.6rem; margin-top:1.4rem;
+  padding-top:1.4rem; border-top:1px solid var(--border);
+}
+.footer-contact .footer-contact-label{
+  font-family:var(--font-data); font-size:0.7rem; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--text-muted); width:100%;
+}
+.footer-contact a{margin-left:0; color:var(--text-secondary); text-decoration:none; font-size:0.85rem;}
+.footer-contact a:hover{color:var(--accent);}
 
 /* Contact modal */
 .modal-overlay{
@@ -433,13 +443,19 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
 </section>
 
 <footer class="footer">
-  <div class="container footer-row">
-    <div class="brand">Networthy</div>
-    <div>
-      <a href="https://networthy.tendimensionlabs.com/privacy">Privacy policy</a>
-      <a href="#" onclick="document.getElementById('contact-modal').style.display='flex'; return false;">Contact</a>
+  <div class="container">
+    <div class="footer-row">
+      <div class="brand">Networthy</div>
+      <div>
+        <a href="https://networthy.tendimensionlabs.com/privacy">Privacy policy</a>
+        <a href="#" onclick="document.getElementById('contact-modal').style.display='flex'; return false;">Contact</a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <span class="footer-contact-label">Get in touch</span>
       <a href="mailto:admin@tendimensionlabs.com">admin@tendimensionlabs.com</a>
-      <a href="https://t.me/networthy" target="_blank" rel="noopener">t.me/networthy</a>
+      <a href="https://www.youtube.com/@Networthy_finance" target="_blank" rel="noopener">youtube.com/@Networthy_finance</a>
+      <a href="https://t.me/networthy_finance" target="_blank" rel="noopener">t.me/networthy_finance</a>
     </div>
   </div>
 </footer>
