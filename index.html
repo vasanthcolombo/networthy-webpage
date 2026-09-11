@@ -98,6 +98,8 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 .vid-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.5rem;}
 .vid-card{text-align:center;}
 .vid-card .label{font-size:0.82rem; color:var(--text-secondary); margin-top:0.6rem;}
+.vid-embed{aspect-ratio:9/16; max-width:15rem; margin:0 auto; border-radius:14px; overflow:hidden; border:1px solid var(--border);}
+.vid-embed iframe{width:100%; height:100%; border:0; display:block;}
 
 /* Footer */
 .footer{border-top:1px solid var(--border); padding:2.5rem 0; margin-top:1rem;}
@@ -386,31 +388,45 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Watch</div>
-      <h2>How to do the important things</h2>
-      <p>Short walkthroughs — drop your YouTube Shorts embed codes into the placeholders below.</p>
+      <h2>Every feature, sixty seconds at a time</h2>
+      <p>Six short videos, each showing exactly one thing — the app itself, not just screenshots of it.</p>
     </div>
     <div class="vid-grid">
       <div class="vid-card">
-        <div class="shot vid" style="aspect-ratio:9/16; max-width:15rem; margin:0 auto; padding:0; border:none; overflow:hidden;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ELOWcknUYNs" title="Recording your first trade" style="border-radius:14px; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/uTU3Jo9Nz3o" title="See Your Full Net Worth in Networthy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="label">Recording your first trade</div>
+        <div class="label">See Your Full Net Worth in Networthy</div>
       </div>
       <div class="vid-card">
-        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Setting up a custom portfolio group</span></div>
-        <div class="label">Grouping your portfolio your way</div>
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/POw41-sehVI" title="Your Investment Dashboard in Networthy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="label">Your Investment Dashboard in Networthy</div>
       </div>
       <div class="vid-card">
-        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Reading the TWR vs MWR chart</span></div>
-        <div class="label">Understanding your real return</div>
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/9SMcP53HwEI" title="Your Holdings, With a P&L Heatmap" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="label">Your Holdings, With a P&L Heatmap</div>
       </div>
       <div class="vid-card">
-        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Importing transactions from Excel</span></div>
-        <div class="label">Bulk import walkthrough</div>
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/kvdSRgT8FSE" title="See Your Trades on the Price Chart" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="label">See Your Trades on the Price Chart</div>
       </div>
       <div class="vid-card">
-        <div class="shot vid"><span class="tag">YouTube Short</span><span class="desc">Adding a private investment and logging its first valuation</span></div>
-        <div class="label">Tracking a private holding</div>
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/-9PPhTrQJOo" title="All Your Trades, Every Broker, One List" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="label">All Your Trades, Every Broker, One List</div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-embed">
+          <iframe src="https://www.youtube.com/embed/u-ReBOslVAk" title="TWR vs MWR: Your Real Return, Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="label">TWR vs MWR: Your Real Return, Explained</div>
       </div>
     </div>
   </div>
