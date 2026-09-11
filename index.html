@@ -3,16 +3,16 @@
 :root{
   --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9;
   --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3;
-  --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF;
+  --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF; --cta:#16A34A;
   --font-display:'Iowan Old Style','Palatino Linotype',Georgia,serif;
   --font-body:-apple-system,'Segoe UI',Roboto,sans-serif;
   --font-data:ui-monospace,'SF Mono','Cascadia Code',Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
-  :root{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; }
+  :root{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; --cta:#22C55E; }
 }
-:root[data-theme="dark"]{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; }
-:root[data-theme="light"]{ --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9; --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3; --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF; }
+:root[data-theme="dark"]{ --bg:#090D15; --surface:#121826; --surface-2:#0E1420; --text:#EDF0F5; --text-secondary:#9AA3B2; --text-muted:#6B7385; --accent:#4A9EFF; --accent-soft:#14263F; --border:#223047; --cta:#22C55E; }
+:root[data-theme="light"]{ --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#F0F3F9; --text:#12151C; --text-secondary:#5B6472; --text-muted:#8A93A3; --accent:#1B6EC2; --accent-soft:#E8F1FC; --border:#E1E6EF; --cta:#16A34A; }
 *{box-sizing:border-box;}
 body{background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6;}
 .container{max-width:56rem; margin:0 auto; padding:0 1.5rem;}
@@ -35,6 +35,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:400; text-wrap:balance; ma
 .btn{font-family:var(--font-body); font-size:0.9rem; font-weight:500; padding:0.7rem 1.3rem; border-radius:8px; text-decoration:none; display:inline-block;}
 .btn-primary{background:var(--accent); color:#fff;}
 .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border);}
+.btn-cta{background:var(--cta); color:#fff; font-size:1.05rem; padding:1rem 2rem;}
 .hero-shot{margin-top:3rem; max-width:28rem;}
 
 /* Placeholder blocks */
@@ -201,7 +202,7 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
     <h1>Every broker, every account, every investment, one honest number.</h1>
     <p class="lede">Networthy consolidates your bank accounts, every investments and every brokerage into a single portfolio — real average-cost math across brokers, true time-weighted vs. money-weighted returns, and dividend income net of withholding tax. Everything stays on your device.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="#">Get it on Google Play</a>
+      <a class="btn btn-cta" href="#">Get it on Google Play</a>
       <a class="btn btn-ghost" href="#difference">See what's different</a>
     </div>
     <div class="hero-shot">
