@@ -145,7 +145,7 @@ img.shot-full.landscape{ max-width:30rem; aspect-ratio:12/5; }
 
 <style id="hero-fix">.hero-shot { max-width: 46rem; } .hero-shot img.shot-full.square { max-width: 46rem; }</style><style id="finances-image-fix">
 #finances-section .wide { max-width: 82rem; }
-#finances-section .section-head, #investments-section .section-head, #private-investments-section .section-head { margin-left: auto; margin-right: auto; text-align: center; }
+#finances-section .section-head, #investments-section .section-head, #private-investments-section .section-head, #ai-assistant-section .section-head { margin-left: auto; margin-right: auto; text-align: center; }
 #finances-section img.shot-full.portrait { max-width: 23rem; }
 #finances-section img.shot-full.square { max-width: 36rem; }
 #finances-section img.shot-full.landscape { max-width: 38rem; }
@@ -390,6 +390,31 @@ img.shot-full.square[src*="markets.png"] { aspect-ratio: 2184 / 2340 !important;
         <p>No live price feed for a private holding, so you check in periodically and log what it's worth — Networthy computes XIRR and P&amp;L the same way it does for a brokerage position, rolling the value forward for any cash that's moved since your last check-in. It also knows the difference between a business paying you profit and you withdrawing your investment: a running pool of what's actually been earned nets against withdrawals first, so a real payout shows up as profit, not a capital pull-out.</p>
       </div>
       <img class="shot-full portrait" src="images/private_investments.png" alt="Private Investments table — XIRR, Profit, Net Invested columns">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ai-assistant-section">
+  <div class="wide">
+    <div class="section-head">
+      <div class="eyebrow">AI Assistant</div>
+      <h2>Ask Claude about your own money — using your own key</h2>
+      <p>A chat assistant that can answer questions about your portfolio, spending, dividends, and performance. Bring your own Anthropic API key and it's yours to use — nothing routes through a server we operate.</p>
+    </div>
+
+    <div class="tour-row">
+      <div class="tour-text">
+        <h3>Your key, your data, your bill — not ours</h3>
+        <p>Paste your own Anthropic API key in Settings and nothing is sent anywhere, not even to us, until that key exists. Every token is billed straight to your own Anthropic account — no markup, no AI subscription bundled into the app. The key itself is stored in your device's secure keychain, not alongside your other preferences.</p>
+      </div>
+      <div class="shot shot-phone"><span class="tag">Screenshot</span><span class="desc">AI Assistant chat — a question about portfolio performance</span></div>
+    </div>
+    <div class="tour-row reverse">
+      <div class="tour-text">
+        <h3>Read-only, and upfront about what it costs</h3>
+        <p>The assistant can look up your portfolio, net worth, transactions, dividends, and performance to answer questions — it can't create, edit, or delete anything. Every reply shows exactly how many tokens it used and what that cost, and you choose the model — Haiku, Sonnet, or Opus — defaulting to the cheapest.</p>
+      </div>
+      <div class="shot shot-phone"><span class="tag">Screenshot</span><span class="desc">AI Assistant Settings — API key, model picker, token cost per reply</span></div>
     </div>
   </div>
 </section>
